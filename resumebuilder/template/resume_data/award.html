@@ -1,0 +1,157 @@
+{% extends 'main.html' %}
+{% load static %}
+{% static 'profile_pictures' as baseURL %}
+{% block title %}Award{% endblock%}
+{% block content %}
+
+
+<div class="body_page">
+    <div class="progress_bar">
+        <div class="prog_content">
+            <ul>
+                <li><a href="{% url 'basic' resume_id %}">1</a></li>
+                <li><a href="{% url 'education' resume_id %}">2</a></li>
+                <li><a href="{% url 'experiances' resume_id %}">3</a></li>
+                <li><a href="{% url 'certificate' resume_id %}">4</a></li>
+                <li class="active"><a href="{% url 'award' resume_id %}"></a>5</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="certificate">
+        <div class="sections-container">
+            <section class="entry_section">
+
+                <div class="">
+                    <form action="" method="post" target="_blank" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="inputs">
+                            <div class="label_input">
+                                <label for="awards_name">Awards Name</label>
+                                <input type="text" name="awards_name" id="awards_name" placeholder="Certificate NAme">
+                            </div>
+                            <div class="label_input">
+                                <label for="details">Details</label>
+                                <input type="text" name="details" id="details" placeholder="Enter Details">
+                            </div>
+
+
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+
+            <div class="vertical-line"></div>
+
+            <section class="show_section">
+                <div class="basic_demo">
+                    <div class="cv">
+                        <header>
+                            <div class="profile">
+                                <img src="/media/{{ BASIC_DIR }}/{{ in_award.picture }}" alt="Your Picture">
+                                <h1>{{in_award.first_name}}{{in_award.last_name}}</h1>
+                            </div>
+                            <div class="contact">
+                                <ul>
+                                    <li><i class="fas fa-phone"></i> {{in_award.contact}}</li>
+                                    <li><i class="fas fa-envelope"></i> {{in_award.email}} </li>
+                                    <li><i
+                                            class="fas fa-map-marker-alt"></i>{{in_award.city}},{{in_award.postcode}},{{in_award.country}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div class="cv_details">
+                            <section class="objective to_left">
+                                <h2>Objective</h2>
+                                <p>{{in_award.objective}}</p>
+                            </section>
+
+                            <section class="education to_left">
+                                <h2>Education</h2>
+                                {% for edu in edu %}
+                                <div class="education-entry">
+                                    <h3> {{edu.school_name}} </h3>
+                                    <p> {{edu.subject}} | ( {% if not edu.still_here %}
+                                        {{edu.start_date}}- {{edu.end_date}} {% else %} {{edu.start_date}}-Present
+                                        {% endif %} )
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </section>
+
+                            <section class="experience to_left">
+                                <h2>Work Experience</h2>
+                                {% for exp in exp %}
+                                <div class="education-entry">
+                                    <h3> {{exp.Company_name}} </h3>
+                                    <p> {{exp.position}} | ( {% if not exp.still_here %}
+                                        {{exp.start_date}}- {{exp.end_date}} {% else %} {{exp.start_date}}-Present{% endif %} )
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </section>
+
+
+                            <section class="certifications to_left">
+                                <h2>Certifications</h2>
+                                {% for cer in cer %}
+                                <div class="certification-entry">
+                                    <h3>{{cer.certificate_name}}</h3>
+                                    <p>{{cer.details}}</p>
+                                </div>
+                                {% endfor %}
+                            </section>
+
+
+                            <section class="certifications to_left">
+                                <h2>Awards/Honors</h2>
+                                <div class="certification-entry">
+                                    <h3><span id="s_awards_name"></span></h3>
+                                    <p><span id="s_details"></span></p>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputs = [
+            { element: document.getElementById("awards_name"), target: document.getElementById("s_awards_name") },
+            { element: document.getElementById("details"), target: document.getElementById("s_details") },
+        ];
+
+        inputs.forEach((input) => {
+            const { element, target, type = "input" } = input;
+            element.addEventListener(type, function () {
+                target.innerHTML = element.value;
+            });
+        });
+    });
+
+</script>
+
+
+{% endblock content %}
+
+<!-- 
+
+<div class="body_page">
+<form action="" method="post"  enctype="multipart/form-data">
+{% csrf_token %}
+<input type="text" name="awards_name" placeholder="awards_name">
+<input type="text" name="details" placeholder="Enter details">
+<input type="submit" value="Submit">
+</form>
+</div> -->

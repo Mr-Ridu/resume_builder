@@ -1,0 +1,215 @@
+{% extends 'main.html' %}
+{% block title %}Basic{% endblock%}
+{% block content %}
+
+<div class="body_page">
+    <div class="progress_bar">
+        <div class="prog_content">
+            {% if not show %}
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            {% else %}
+            <ul>
+                <li class="active">1</li>
+                <li><a href="{% url 'education' resume_id %}">2</a></li>
+                <li><a href="{% url 'experiances' resume_id %}">3</a></li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="basic">
+        <div class="sections-container">
+            <section class="entry_section">
+                <div class="">
+                    {% if not show %}
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="inputs">
+                            <div class="label_input">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" placeholder="Enter Username">
+                            </div>
+                          
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name">
+                                </div>
+                            
+                                <div class="form-group col-md-6">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name">
+                                </div>
+                            </div>
+                            
+                            <div class="name_flex">  <div class="label_input">
+                                <label for="contact">Contact</label>
+                                <input type="number" name="contact" id="contact" placeholder="Enter Contact" >
+                            </div>
+                            <div class="label_input">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Enter Email">
+                            </div></div>
+                          
+                            <div class="name_flex">
+                            <div class="label_input">
+                                <label for="city">City</label>
+                                <input type="text" name="city" id="city" placeholder="Enter City">
+                            </div>
+                            <div class="label_input">
+                                <label for="postcode">Postcode</label>
+                                <input type="number" name="postcode" id="postcode" placeholder="Enter Postcode">
+                            </div>
+                            <div class="label_input">
+                                <label for="country">Country</label>
+                                <input type="text" name="country" id="country" placeholder="Enter Country" >
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="label_input col-md-6">
+                                <label for="picture">Picture</label>
+                                <input type="file" name="picture" id="picture">
+                            </div>
+                            <div class="label_input col-md-6">
+                                <label for="objective">Objective/Summary</label>
+                                <textarea name="objective" id="objective" cols="30" rows="3"> </textarea>
+                            </div>
+                        </div>
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </div>
+                    </form>
+
+                    {% else %}
+
+                    
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="inputs">
+                            <div class="label_input">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" placeholder="Enter Username" value="{{show.username}}">
+                            </div>
+                            <div class="row">
+                            <div class="label_input input-group col-md-6">
+                                <label for="first_name input-group-text">First Name</label>
+                                <input type="text" aria-label="First Name" name="first_name" id="first_name" placeholder="Enter First Name" value="{{show.first_name}}">
+                            </div>
+
+                            <div class="label_input input-group col-md-6">
+                                <label for="last_name">Last Name</label>
+                                <span class="input-group-text">Last Name</span>
+                                <input type="text" aria-label="Last Name" name="last_name" id="last_name" placeholder="Enter Last Name" value="{{show.last_name}}">
+                            </div>
+                            </div>
+                            <div class="name_flex">  <div class="label_input">
+                                <label for="contact">Contact</label>
+                                <input type="number" name="contact" id="contact" placeholder="Enter Contact"  value="{{show.contact}}">
+                            </div>
+                            <div class="label_input">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Enter Email"  value="{{show.email}}">
+                            </div></div>
+                          
+                            <div class="name_flex">
+                            <div class="label_input">
+                                <label for="city">City</label>
+                                <input type="text" name="city" id="city" placeholder="Enter City"  value="{{show.city}}">
+                            </div>
+                            <div class="label_input">
+                                <label for="postcode">Postcode</label>
+                                <input type="number" name="postcode" id="postcode" placeholder="Enter Postcode"  value="{{show.postcode}}">
+                            </div>
+                            <div class="label_input">
+                                <label for="country">Country</label>
+                                <input type="text" name="country" id="country" placeholder="Enter Country"  value="{{show.country}}">
+                            </div>
+                            </div>
+                            <div class="label_input">
+                                <label for="picture">Picture</label>
+                                <input type="file" name="picture" id="picture">
+                            </div>
+                            <div class="label_input">
+                                <label for="objective">Objective/Summary</label>
+                                <textarea name="objective" id="objective" cols="30" rows="3"> {{show.objective}}</textarea>
+                            </div>
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </div>
+                    </form>
+                    {% endif %}
+
+                </div>
+            </section>
+
+            <div class="vertical-line"></div>
+
+            <section class="show_section">
+                <div class="basic_demo">
+                    <div class="cv">
+                        <header>
+                            <div class="profile">
+                                <img src="" id="s_picture">
+                                <h1><span id="s_user"></span> <span id="s_l_name"></span></h1>
+                            </div>
+                            <div class="contact">
+                                <ul>
+                                    <li><i class="fas fa-phone"></i> <span id="s_contact"></span></li>
+                                    <li><i class="fas fa-envelope"></i><span id="s_email"></span></li>
+                                    <li><i class="fas fa-map-marker-alt"></i> <span id="s_city"></span>, <span
+                                            id="s_postcode"></span>,<span id="s_country"></span></li>
+                                </ul>
+                            </div>
+                        </header>
+
+                        <section class="objective to_left">
+                            <h2>Objective</h2>
+                            <p id="s_objective"></p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputs = [
+            { element: document.getElementById("first_name"), target: document.getElementById("s_user") },
+            { element: document.getElementById("last_name"), target: document.getElementById("s_l_name") },
+            { element: document.getElementById("contact"), target: document.getElementById("s_contact") },
+            { element: document.getElementById("email"), target: document.getElementById("s_email") },
+            { element: document.getElementById("city"), target: document.getElementById("s_city") },
+            { element: document.getElementById("postcode"), target: document.getElementById("s_postcode") },
+            { element: document.getElementById("country"), target: document.getElementById("s_country") },
+            { element: document.getElementById("objective"), target: document.getElementById("s_objective") },
+            { element: document.getElementById("picture"), target: document.getElementById("s_picture"), type: "change" },
+        ];
+    
+        inputs.forEach((input) => {
+            const { element, target, type = "input" } = input;
+            element.addEventListener(type, function () {
+                target.innerHTML = element.value;
+    
+                if (type === "change" && element.files.length > 0) {
+                    const pictureURL = URL.createObjectURL(element.files[0]);
+                    target.src = pictureURL;
+                }
+            });
+        });
+    });
+    
+</script>
+
+{% endblock content %}

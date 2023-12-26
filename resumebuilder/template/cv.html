@@ -1,0 +1,102 @@
+{% load static %}
+{% static 'profile_pictures' as baseURL %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{resu.first_name}} {{resu.last_name}} - CV</title>
+    <link rel="stylesheet" href="{% static 'css/cv/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="cv">
+        <header>
+            <div class="profile">
+                <img src="/media/{{ BASIC_DIR }}/{{ resu.picture }}" alt="Your Name">
+                <h1>{{resu.first_name}} {{resu.last_name}}</h1>
+
+            </div>
+            <div class="contact">
+                <ul>
+                    <li><i class="fas fa-phone"></i>{{resu.contact}}</li>
+                    <li><i class="fas fa-envelope"></i> {{resu.email}} </li>
+                    <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mim-ahamed-riyad-3a3770285">LinkedIn Profile</a></li>
+                    <li><i class="fa-brands fa-square-github"></i> <a href="https://www.linkedin.com/in/mim-ahamed-riyad-3a3770285">Github Profile</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="objective">
+            <h2>Objective</h2>
+            <p>
+                {{resu.objective}}
+            </p>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <div class="education-entry">
+                {% for e in edu %}
+                <h3>{{e.school_name}}</h3>
+                <p>{{e.subject}} (In Progress)</p>
+                <p>{{e.cgpa}}</p>
+                {% endfor %}
+            </div>
+           
+        </section>
+
+        <section class="technical-skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Bootstrap</li>
+                <li>Python</li>
+                <li>Django</li>
+            </ul>
+        </section>
+
+        <section class="work-experience">
+            <h2>Work Experience</h2>
+            <div class="experience-entry">
+                {% for e in exp %}
+                <h3>{{e.Company_name}}</h3>
+                <p>{{e.position}}</p>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Projects</h2>
+            <div class="project-entry">
+                <h3>Click Embellished</h3>
+                <p>Features: Photo sharing, photo selling, event management, and social media functionality.</p>
+                <p>Technology: Django</p>
+            </div>
+           
+        </section>
+
+        <section class="certifications">
+            <h2>Certifications</h2>
+            <div class="certification-entry">
+                {% for e in cer %}
+                <h3>{{e.certificate_name}}</h3>
+                <p>{{e.details}}</p>
+                {% endfor %}
+          
+            </div>
+        </section>
+
+        <section class="awards-honors">
+            <h2>Awards/Honors</h2>
+            <div class="certification-entry">
+
+            {% for e in awrd %}
+            <h3>{{e.awards_name}}</h3>
+            <p>{{e.details}}</p>
+            {% endfor %}
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{% extends 'main.html' %}
+{% load static %}
+{% static 'profile_pictures' as baseURL %}
+{% block title %}Certification{% endblock%}
+{% block content %}
+
+
+<div class="body_page">
+    <div class="progress_bar">
+        <div class="prog_content">
+            <ul>
+                <li><a href="{% url 'basic' resume_id %}">1</a></li>
+                <li><a href="{% url 'education' resume_id %}">2</a></li>
+                <li><a href="{% url 'experiances' resume_id %}">3</a></li>
+                <li class="active"><a href="{% url 'certificate' resume_id %}"></a>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="certificate">
+        <div class="sections-container">
+            <section class="entry_section">
+
+                <div class="">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="inputs">
+                            <div class="label_input">
+                                <label for="certificate_name">Certificate Name</label>
+                                <input type="text" name="certificate_name" id="certificate_name" placeholder="Certificate NAme">
+                            </div>
+                            <div class="label_input">
+                                <label for="details">Details</label>
+                                <input type="text" name="details" id="details" placeholder="Enter Details">
+                            </div>
+                           
+                        
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+
+            <div class="vertical-line"></div>
+
+            <section class="show_section">
+                <div class="basic_demo">
+                    <div class="cv">
+                        <header>
+                            <div class="profile">
+                                <img src="/media/{{ BASIC_DIR }}/{{ in_certificate.picture }}" alt="Your Picture">
+                                <h1>{{in_certificate.first_name}}{{in_certificate.last_name}}</h1>
+                            </div>
+                            <div class="contact">
+                                <ul>
+                                    <li><i class="fas fa-phone"></i> {{in_certificate.contact}}</li>
+                                    <li><i class="fas fa-envelope"></i> {{in_certificate.email}} </li>
+                                    <li><i
+                                            class="fas fa-map-marker-alt"></i>{{in_certificate.city}},{{in_certificate.postcode}},{{in_certificate.country}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div class="cv_details">
+                            <section class="objective to_left">
+                                <h2>Objective</h2>
+                                <p>{{in_certificate.objective}}</p>
+                            </section>
+
+                            <section class="education to_left">
+                                <h2>Education</h2>
+                                {% for edu in edu %}
+                                <div class="education-entry">
+                                    <h3> {{edu.school_name}} </h3>
+                                    <p> {{edu.subject}} | ( {% if not edu.still_here %}
+                                        {{edu.start_date}}- {{edu.end_date}} {% else %} {{edu.start_date}}-Present{% endif %} )
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </section>
+
+                            <section class="experience to_left">
+                                <h2>Work Experience</h2>
+                                {% for exp in exp %}
+                                <div class="education-entry">
+                                    <h3> {{exp.Company_name}} </h3>
+                                    <p> {{exp.position}} | ( {% if not exp.still_here %}
+                                        {{exp.start_date}}- {{exp.end_date}} {% else %} {{exp.start_date}}-Present{% endif %} )
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </section>
+
+
+                            <section class="certifications to_left">
+                                <h2>Certifications</h2>
+                                <div class="certification-entry">
+                                    <h3><span id="s_certificate_name"></span></h3>
+                                    <p><span id="s_details" ></span></p>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputs = [
+            { element: document.getElementById("certificate_name"), target: document.getElementById("s_certificate_name") },
+            { element: document.getElementById("details"), target: document.getElementById("s_details") },
+        ];
+
+        inputs.forEach((input) => {
+            const { element, target, type = "input" } = input;
+            element.addEventListener(type, function () {
+                target.innerHTML = element.value;
+            });
+        });
+    });
+
+</script>
+
+
+{% endblock content %}
+
+
+<!-- backup -->
+<!-- 
+<div class="body_page">
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="jscertificate">
+
+        <div class="exesting">
+            <input type="text" name="certificate_name" placeholder="certificate_name">
+            <input type="text" name="details" placeholder="Enter details">
+        </div>
+    </div>
+
+    <input type="submit" value="Submit">
+</form>
+<button type="button" id="addmore">Add more fields</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const addbutton = document.getElementById('addmore');
+        const newdata = document.getElementById('jscertificate');
+
+        addbutton.addEventListener("click", function () {
+            const newcertificate = document.createElement("div");
+            newcertificate.classList.add("exesting");
+
+            newcertificate.innerHTML = `
+            <input type="text" name="certificate_name" placeholder="certificate_name">
+            <input type="text" name="details" placeholder="Enter details">
+            `;
+            newdata.appendChild(newcertificate)
+
+        });
+    });
+</script> -->

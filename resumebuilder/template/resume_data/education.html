@@ -1,0 +1,164 @@
+{% extends 'main.html' %}
+{% load static %}
+{% static 'profile_pictures' as baseURL %}
+{% block title %}Education{% endblock%}
+{% block content %}
+
+
+<div class="body_page">
+
+    <div class="progress_bar">
+        <div class="prog_content">
+            <ul>
+                <li><a href="{% url 'basic' resume_id %}">1</a></li>
+                <li class="active">2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="education">
+        <div class="sections-container">
+            <section class="entry_section">
+
+                <div class="">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="inputs">
+                            <div class="label_input">
+                                <label for="school_name">Institute Name</label>
+                                <input type="text" name="school_name" id="school_name" placeholder="School NAme">
+                            </div>
+                            <div class="label_input">
+                                <label for="subject">Subject Name</label>
+                                <input type="text" name="subject" id="subject" placeholder="Enter Subject">
+                            </div>
+                            <div class="label_input">
+                                <label for="start_date">Start Date</label>
+                                <input type="date" name="start_date" id="start_date">
+                            </div>
+                            <div class="label_input">
+                                <label for="end_date">End Date</label>
+                                <input type="date" name="end_date" id="end_date">
+                            </div>
+                            <div class="label_input">
+                                <label for="still_here">Still Here?</label>
+                                <input type="checkbox" name="still_here" id="still_here">
+                            </div>
+                            <div class="label_input">
+                                <label for="cgpa">CGPA</label>
+                                <input type="text" name="cgpa" id="cgpa" placeholder="Enter Cgpa">
+                            </div>
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </div>
+                    </form>
+
+                 
+                {% for i in show %}
+                <form action="" method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" name="school_name" value="{{i.school_name}}">
+                    <input type="text" name="subject" placeholder="Enter Subject" value="{{i.subject}}">
+                    <input type="date" name="start_date" id="">
+                    <input type="date" name="end_date" id="">
+                    <input type="checkbox" name="still_here" id="">
+                    <input type="text" name="cgpa" placeholder="Enter Cgpa">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="reset">
+                    </form>
+                {% endfor %}
+                </div>
+
+            </section>
+
+
+            <div class="vertical-line"></div>
+
+            <section class="show_section">
+                <div class="basic_demo">
+                    <div class="cv">
+                        <header>
+                            <div class="profile">
+                                <img src="/media/{{ BASIC_DIR }}/{{ in_education.picture }}" alt="Your Picture">
+                                <h1>{{in_education.first_name}}{{in_education.last_name}}</h1>
+                            </div>
+                            <div class="contact">
+                                <ul>
+                                    <li><i class="fas fa-phone"></i> {{in_education.contact}}</li>
+                                    <li><i class="fas fa-envelope"></i> {{in_education.email}} </li>
+                                    <li><i
+                                            class="fas fa-map-marker-alt"></i>{{in_education.city}},{{in_education.postcode}},{{in_education.country}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div class="cv_details">
+                            <section class="objective to_left">
+                                <h2>Objective</h2>
+                                <p>{{in_education.objective}}</p>
+                            </section>
+
+                            <section class="education to_left">
+                                <h2>Education</h2>
+                                <div class="education-entry">
+
+                                    <h3 id="s_school_name"></h3>
+                                    <p><span id="s_subject"></span> | (<span id="s_end_date"></span>)
+                                    <p>
+                                </div>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputs = [
+            { element: document.getElementById("school_name"), target: document.getElementById("s_school_name") },
+            { element: document.getElementById("subject"), target: document.getElementById("s_subject") },
+            { element: document.getElementById("start_date"), target: document.getElementById("s_start_date") },
+            { element: document.getElementById("end_date"), target: document.getElementById("s_end_date") },
+            { element: document.getElementById("still_here"), target: document.getElementById("s_still_here") },
+            { element: document.getElementById("cgpa"), target: document.getElementById("s_cgpa") },
+
+        ];
+
+        inputs.forEach((input) => {
+            const { element, target, type = "input" } = input;
+            element.addEventListener(type, function () {
+                target.innerHTML = element.value;
+            });
+        });
+    });
+
+</script>
+
+
+
+
+<!-- for backup -->
+<!-- <div class="body_page">
+<form action="" method="post"  enctype="multipart/form-data">
+{% csrf_token %}
+<input type="text" name="school_name" placeholder="School NAme">
+<input type="text" name="subject" placeholder="Enter Subject">
+<input type="date" name="start_date" id="">
+<input type="date" name="end_date" id="">
+<input type="checkbox" name="still_here" id="">
+<input type="text" name="cgpa" placeholder="Enter Cgpa">
+<input type="submit" value="Submit">
+<input type="reset" value="reset">
+</form>
+</div> -->
+{% endblock content %}

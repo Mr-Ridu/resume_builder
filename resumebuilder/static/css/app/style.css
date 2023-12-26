@@ -1,0 +1,341 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+
+}
+ a{
+    cursor: pointer;
+    text-decoration: none;
+ }
+.navbar_c{
+   height: 100px;
+   background-color: rgb(11, 67, 77);
+   position: fixed;
+   width: 100%;
+   align-items: center;
+   padding-top: 20px;
+}
+
+.navbar_c ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar_c li {
+    display: flex;
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: color 0.3s ease;
+    /* Add a transition for smooth color change */
+}
+
+.navbar_c a{
+    text-decoration: none;
+    color: #3ed4d4;
+
+}
+.navbar_c a:hover {
+    color: rgb(13, 175, 35);
+    cursor: pointer;
+}
+
+/* for every pages body  */
+.body_page{
+    padding-top: 120px;
+    background-color:  rgb(11, 67, 77);
+}
+.progress_bar{
+    height: 70px;
+    background-color: rgb(179, 109, 29);
+    align-items: center;
+}
+
+.prog_content ul {
+    display: flex;
+    justify-content: calc((100% / 2)-25px);
+    margin-left: 100px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.prog_content ul li {
+    padding: 5px 10px;
+    background-color: #ccc; /* Background color for non-active items */
+    margin-left: 5px; /* Add spacing between items */
+    font-family: fantasy;
+    align-items: center;
+    display: inline-flex
+}
+
+.prog_content ul li.active {
+    background-color: #0da314; /* Background color for the first (active) item */
+    color: #fff; /* Text color for the first (active) item */
+}
+
+
+
+
+/* from gpt to set the background img */
+.carousel {
+    height: 500px; /* Set the height to 700px */
+    overflow: hidden; /* Hide overflow to prevent image spillover */
+    width: 100%;
+}
+
+/* .carousel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 140px;
+    background-image: url('/static/img/carosel.png'); 
+    background-size: cover; 
+    background-position: center;
+    z-index: -1; 
+} */
+.carousel-bg {
+    font-family:'Courier New', Courier, monospace;
+    
+
+}
+.carousel-bg h1{
+    font-size: 3.5rem;
+    margin-left: 20px;
+    color: #411504;
+}
+
+.carousel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+
+.makecv  {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; 
+    flex-grow: 1;
+}
+.makecv a {
+    padding: 10px 20px;
+    background-color: #3ed4d4; /* Button background color */
+    color:  #323535; /* Button text color */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease, font-size 0.3s ease;
+}
+
+.makecv a:hover {
+    background-color: rgb(13, 175, 35); /* Button background color on hover */
+    font-weight: bolder;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.gunagun {
+    text-align: right;
+}
+
+.gunagun ul {
+    list-style: none;
+    padding: 0;
+}
+
+.gunagun ul li {
+    text-align: left;
+}
+
+
+/* now started css for basic page  */
+
+.sections-container {
+    display: flex;
+    justify-content: space-evenly; /* Space the sections horizontally */
+    max-width: 1100px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding to space the sections from the edges */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.entry_section {
+    padding: 20px;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start; /* Align form items to the left */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    max-height: calc(100vh - 100px); /* Adjust the max-height as needed, considering the navbar height */
+}
+
+.vertical-line {
+    width: 1px; /* Width of the vertical line */
+    background-color: #000; /* Line color */
+    margin: 2px;
+}
+
+
+
+.show_section {
+    text-align: center;
+    display: flex; /* Use flex display for show_section */
+    flex: 1;
+    flex-direction: column;
+    border: 1px solid #0e1013;
+    background-color: #fff;
+   
+
+}
+.entry_section input{
+    line-height: 25px;
+}
+
+/* Style the form inputs and labels */
+
+.label_input {
+    margin-bottom: 10px;
+
+}
+
+label {
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #11737a;
+    height: 45px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+    border: 2px solid rgb(50, 102, 104);
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+   
+}
+input[type="file"]:hover {
+    background-color: #17c517;
+}
+
+#first_name,
+#last_name{
+    width: 200px;
+}
+#city,
+#postcode,
+#country{
+    width: 100px;
+}
+
+
+/* Style the submit button */
+input[type="submit"] {
+    padding: 5px 30px;
+    background-color: rgb(36, 137, 155);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+input[type="reset"] {
+    padding: 5px 25px;
+    background-color: rgb(74, 167, 65);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style the submit button on hover */
+input[type="submit"]:hover {
+    background-color: #168b3d;
+}
+input[type="reset"]:hover {
+    background-color: rgb(36, 137, 155);
+}
+
+.name_flex{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+
+
+
+/* CV section started */
+
+.basic_demo {
+    padding: 20px;
+}
+
+/* Style the CV header */
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+/* Style contact information */
+
+.contact ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+.contact li {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.contact li i {
+    margin-right: 5px;
+}
+
+/* Style sections */
+.cv h2 {
+    background-color: #007bff;
+    color: white;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+
+.to_left{
+    text-align: left;
+}
+
+/* Adjustments for mobile responsiveness (optional) */
+@media (max-width: 500px) {
+    .cv {
+        width: 100%;
+        padding: 10px;
+    }
+
+}
+
+.label_input{
+    display: flex;
+}
+
