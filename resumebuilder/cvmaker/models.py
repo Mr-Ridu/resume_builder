@@ -22,7 +22,7 @@ class Education(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)  # Allow for ongoing education
     still_here = models.BooleanField(default=False)
-    cgpa = models.DecimalField(max_digits=5, decimal_places=2)  # Use DecimalField for GPA
+    cgpa = models.DecimalField(max_digits=5, decimal_places=2, null=True)  # Use DecimalField for GPA
 
 
 class experiance(models.Model):

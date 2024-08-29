@@ -33,9 +33,9 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="inputs">
-                            <div class="label_input">
+                            <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" placeholder="Enter Username">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">
                             </div>
                           
                             <div class="row">
@@ -49,36 +49,41 @@
                                     <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name">
                                 </div>
                             </div>
-                            
-                            <div class="name_flex">  <div class="label_input">
+                           
+                            <div class="name_flex row"> 
+                                <div class="form-group col-md-6">
                                 <label for="contact">Contact</label>
-                                <input type="number" name="contact" id="contact" placeholder="Enter Contact" >
+                                <input type="number" class="form-control" name="contact" id="contact" placeholder="Enter Contact" >
                             </div>
-                            <div class="label_input">
+                            <div class="form-group col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Enter Email">
-                            </div></div>
-                          
-                            <div class="name_flex">
-                            <div class="label_input">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+                            </div>
+                         </div>
+                           
+                         
+                            <div class="name_flex row">
+                            <div class=" form-group col-md-4">
                                 <label for="city">City</label>
-                                <input type="text" name="city" id="city" placeholder="Enter City">
+                                <input type="text" class="form-control" name="city" id="city" placeholder="Enter City">
                             </div>
-                            <div class="label_input">
+                            <div class=" form-group col-md-4">
                                 <label for="postcode">Postcode</label>
-                                <input type="number" name="postcode" id="postcode" placeholder="Enter Postcode">
+                                <input type="number" class="form-control" name="postcode" id="postcode" placeholder="Enter Postcode">
                             </div>
-                            <div class="label_input">
+                            <div class=" form-group col-md-4">
                                 <label for="country">Country</label>
-                                <input type="text" name="country" id="country" placeholder="Enter Country" >
+                                <input type="text" class="form-control" name="country" id="country" placeholder="Enter Country" >
                             </div>
                             </div>
                             <div class="row">
-                            <div class="label_input col-md-6">
-                                <label for="picture">Picture</label>
-                                <input type="file" name="picture" id="picture">
+                            
+                                <label for="picture"  class="form-label">Picture</label>
+                                <input type="file" class="form-control" name="picture" id="picture">
+                            
                             </div>
-                            <div class="label_input col-md-6">
+                            <div class="row">
+                            <div class=" col-md-6">
                                 <label for="objective">Objective/Summary</label>
                                 <textarea name="objective" id="objective" cols="30" rows="3"> </textarea>
                             </div>

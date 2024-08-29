@@ -27,25 +27,25 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="inputs">
-                            <div class="label_input">
+                            <div class="form-group">
                                 <label for="Company_name">Company Name</label>
-                                <input type="text" name="Company_name" id="Company_name" placeholder="Company NAme">
+                                <input type="text" class="form-control" name="Company_name" id="Company_name" placeholder="Company Name">
                             </div>
-                            <div class="label_input">
+                            <div class="form-group">
                                 <label for="position">Position</label>
-                                <input type="text" name="position" id="position" placeholder="Enter position">
+                                <input type="text" class="form-control" name="position" id="position" placeholder="Enter position">
                             </div>
-                            <div class="label_input">
+                            <div class="form-group">
                                 <label for="start_date">Start Date</label>
-                                <input type="date" name="start_date" id="start_date">
+                                <input type="date" class="form-control" name="start_date" id="start_date">
                             </div>
-                            <div class="label_input">
+                            <div class="form-group">
                                 <label for="end_date">End Date</label>
-                                <input type="date" name="end_date" id="end_date">
+                                <input type="date" class="form-control" name="end_date" id="end_date">
                             </div>
-                            <div class="label_input">
+                            <div class="form-check mt-2">
                                 <label for="still_here">Still Here?</label>
-                                <input type="checkbox" name="still_here" id="still_here">
+                                <input type="checkbox"  name="still_here" id="still_here">
                             </div>
                            
                             <input type="submit" value="Submit">

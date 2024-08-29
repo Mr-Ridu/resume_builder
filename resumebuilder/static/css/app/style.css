@@ -2,7 +2,15 @@ html,body{
     margin: 0;
     padding: 0;
     user-select: none;
+    background-color:  rgb(11, 67, 77);
+}
 
+p{
+    color: rgb(196, 137, 96);
+}
+section{
+    margin-left: 20px;
+    margin-right: 20px;
 }
  a{
     cursor: pointer;
@@ -121,6 +129,7 @@ html,body{
     align-items: center; /* Center horizontally */
     justify-content: center; 
     flex-grow: 1;
+    padding-top: 10rem;
 }
 .makecv a {
     padding: 10px 20px;
@@ -326,6 +335,17 @@ input[type="reset"]:hover {
     text-align: left;
 }
 
+footer{
+    padding-top: 10rem;padding-top: 10rem;
+    background-color:  rgb(11, 67, 77);
+   
+}
+
+label{
+    color: rgb(164, 231, 231);
+
+}
+
 /* Adjustments for mobile responsiveness (optional) */
 @media (max-width: 500px) {
     .cv {
@@ -339,3 +359,46 @@ input[type="reset"]:hover {
     display: flex;
 }
 
+/* General styling for social icons */
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Facebook icon styling */
+.social-icon.facebook {
+    background-color: #3b5998;
+}
+
+.social-icon.facebook:hover {
+    background-color: #2d4373;
+    transform: scale(1.1);
+}
+
+/* Twitter icon styling */
+.social-icon.twitter {
+    background-color: #1da1f2;
+}
+
+.social-icon.twitter:hover {
+    background-color: #0d95e8;
+    transform: scale(1.1);
+}
+
+/* LinkedIn icon styling */
+.social-icon.linkedin {
+    background-color: #0077b5;
+}
+
+.social-icon.linkedin:hover {
+    background-color: #005582;
+    transform: scale(1.1);
+}

@@ -2,13 +2,25 @@
 {% static 'profile_pictures' as baseURL %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{resu.first_name}} {{resu.last_name}} - CV</title>
     <link rel="stylesheet" href="{% static 'css/cv/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+   <!-- Include Dompurify -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"></script>
+    
+   <!-- Include html2canvas -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+   <!-- Include jsPDF -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
 </head>
+
 <body>
     <div class="cv">
         <header>
@@ -19,10 +31,10 @@
             </div>
             <div class="contact">
                 <ul>
-                    <li><i class="fas fa-phone"></i>{{resu.contact}}</li>
+                    <li><i class="fas fa-phone"></i> {{resu.contact}}</li>
                     <li><i class="fas fa-envelope"></i> {{resu.email}} </li>
-                    <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mim-ahamed-riyad-3a3770285">LinkedIn Profile</a></li>
-                    <li><i class="fa-brands fa-square-github"></i> <a href="https://www.linkedin.com/in/mim-ahamed-riyad-3a3770285">Github Profile</a></li>
+                    <!-- <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mim-ahamed-riyad-3a3770285">LinkedIn Profile</a></li>
+                    <li><i class="fa-brands fa-square-github"></i> <a href="https://www.linkedin.com/in/mim-ahamed-riyad-3a3770285">Github Profile</a></li> -->
                 </ul>
             </div>
         </header>
@@ -43,7 +55,7 @@
                 <p>{{e.cgpa}}</p>
                 {% endfor %}
             </div>
-           
+
         </section>
 
         <section class="technical-skills">
@@ -73,7 +85,7 @@
                 <p>Features: Photo sharing, photo selling, event management, and social media functionality.</p>
                 <p>Technology: Django</p>
             </div>
-           
+
         </section>
 
         <section class="certifications">
@@ -83,7 +95,7 @@
                 <h3>{{e.certificate_name}}</h3>
                 <p>{{e.details}}</p>
                 {% endfor %}
-          
+
             </div>
         </section>
 
@@ -91,12 +103,41 @@
             <h2>Awards/Honors</h2>
             <div class="certification-entry">
 
-            {% for e in awrd %}
-            <h3>{{e.awards_name}}</h3>
-            <p>{{e.details}}</p>
-            {% endfor %}
+                {% for e in awrd %}
+                <h3>{{e.awards_name}}</h3>
+                <p>{{e.details}}</p>
+                {% endfor %}
             </div>
         </section>
     </div>
+    <!-- <button id="download-btn">Download CV as PDF</button> -->
+
+    <script>
+        document.getElementById("download-btn").addEventListener("click", function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            const cvContent = document.querySelector(".cv").outerHTML;
+
+            doc.html(cvContent, {
+                callback: function (doc) {
+                    doc.save("CV.pdf");
+                },
+                x: 10,
+                y: 10,
+                width: 190, // Match the A4 page width
+                windowWidth: 1024, // Simulate viewport width
+                html2canvas: {
+                    scale: 0.5  // Further reduce scale
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>
